@@ -16,11 +16,23 @@ const port = 3000;
 app.use(express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "views/Main.html"));
+  res.sendFile(path.join(__dirname, "views/Main.html"));
 });
 // Skapa dina paths här!
 app.get("/profile", (req, res) => {
-    res.sendFile(path.join(__dirname, "views/Profile.html"));
+  res.sendFile(path.join(__dirname, "views/Profile.html"));
+});
+
+app.get("/loadIn", (req, res) => {
+  const searchTerm = req.params.searchTerm;
+  const page = req.params.page;
+  // console.log(searchTerm, page);
+  fetch(`/Json/Mangas.json`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      res.send(data);
+    });
 });
 
 // Starta servern och säg vilken port den ska lyssna på

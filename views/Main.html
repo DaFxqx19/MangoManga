@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Main Page</title>
-        <link rel="stylesheet" href="css/Main.css" />
-    </head>
-    <body>
-        <div class="top">
-            <div class="nav-bar">
-                <div
-                    class="start nav-child"
-                    onclick="window.location.assign('http://localhost:3000/')"
-                >
-                    Start
-                </div>
-                <div class="authors nav-child">Authors</div>
-                <div class="random nav-child">Random</div>
-                <div
-                    class="profile nav-child"
-                    onclick="window.location.assign('http://localhost:3000/profile')"
-                >
-                    Profile
-                </div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Page</title>
+    <link rel="stylesheet" href="css/Main.css" />
+  </head>
+  <body>
+    <div class="top">
+      <div class="nav-bar">
+        <div
+          class="start nav-child"
+          onclick="window.location.assign('http://localhost:3000/')"
+        >
+          Start
         </div>
-        <div class="real-body"></div>
-        <div class="bottom-bar"></div>
-    </body>
+        <div class="authors nav-child">Authors</div>
+        <div class="random nav-child">Random</div>
+        <div
+          class="profile nav-child"
+          onclick="window.location.assign('http://localhost:3000/profile')"
+        >
+          Profile
+        </div>
+      </div>
+    </div>
+    <div class="real-body">
+      <div class="Manga-Grid"></div>
+      <!-- <div class="Manga"></div> -->
+    </div>
+    <div class="bottom-bar"></div>
+    <script>
+      const loadIn = async (yes) => {
+        const response = await fetch("http://localhost:3000/getcart");
+        const data = await response.json();
+      };
+    </script>
+  </body>
 </html>
