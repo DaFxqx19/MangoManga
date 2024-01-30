@@ -1,0 +1,16 @@
+{
+    "Mangas":[
+        {
+            "name":"One Piece","length":"0","Thumbnail":""
+        },
+        {
+            "name":"Naruto","length":"0"
+        },
+        {
+            "name":"Black Clover","length":"0"
+        },
+        {
+            "name":"Hunter x Hunter","length":"0"
+        }
+    ]
+}
