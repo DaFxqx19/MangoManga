@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Main Page</title>
-    <link rel="stylesheet" href="css/Main.css" />
-  </head>
-  <body>
-    <div class="top">
-      <div class="nav-bar">
-        <div
-          class="start nav-child"
-          onclick="window.location.assign('http://localhost:3000/')"
-        >
-          Start
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Main Page</title>
+        <link rel="stylesheet" href="css/Main.css" />
+    </head>
+    <body>
+        <div class="top">
+            <div class="nav-bar">
+                <div
+                    class="start nav-child"
+                    onclick="window.location.assign('http://localhost:3000/')"
+                >
+                    Start
+                </div>
+                <div class="authors nav-child">Authors</div>
+                <div class="random nav-child">Random</div>
+                <div
+                    class="profile nav-child"
+                    onclick="window.location.assign('http://localhost:3000/profile')"
+                >
+                    Profile
+                </div>
+            </div>
         </div>
-        <div class="authors nav-child">Authors</div>
-        <div class="random nav-child">Random</div>
-        <div
-          class="profile nav-child"
-          onclick="window.location.assign('http://localhost:3000/profile')"
-        >
-          Profile
+        <div class="real-body">
+            <div class="Mango-Grid" id="gridMaster"></div>
+            <!-- <div class="Manga"></div> -->
         </div>
-      </div>
-    </div>
-    <div class="real-body">
-      <div class="Manga-Grid"></div>
-      <!-- <div class="Manga"></div> -->
-    </div>
-    <div class="bottom-bar"></div>
-    <script>
-      const loadIn = async (yes) => {
-        const response = await fetch("http://localhost:3000/getcart");
-        const data = await response.json();
-      };
-    </script>
-  </body>
+        <div class="bottom-bar"></div>
+        <script>
+            const gridDiv = document.getElementById("gridMaster");
+            const loadIn = async () => {
+                try {
+                    const response = await fetch(
+                        "http://localhost:3000/loadIn"
+                    );
+                    const data = await response.json();
+                    const Mangas = data.Mangas;
+                    // console.log(Mangas);
+
+                    gridDiv.innerHTML = "";
+                    Mangas.forEach(element => {
+                        // console.log(element);
+                        gridDiv.innerHTML += `<div class="Mango"><div/>`;
+                    });
+                } catch (error) {
+                    // handle the error
+                    console.error(error);
+                }
+            };
+            loadIn();
+        </script>
+    </body>
 </html>
