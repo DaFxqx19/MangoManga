@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const jsonMeny = require("./Mangas.json");
+let favorites = [];
 
 // Kräv JSON filen
 // const data = require("./ordlista.json");
@@ -17,16 +18,16 @@ const port = 3000;
 app.use(express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "views/Main.html"));
+  res.sendFile(path.join(__dirname, "views/Main.html"));
 });
 // Skapa dina paths här!
 app.get("/profile", (req, res) => {
-    res.sendFile(path.join(__dirname, "views/Profile.html"));
+  res.sendFile(path.join(__dirname, "views/Profile.html"));
 });
 
 app.get("/loadIn", (req, res) => {
-    // console.log(searchTerm, page);
-    res.send(jsonMeny);
+  // console.log(searchTerm, page);
+  res.send(jsonMeny);
 });
 
 // Starta servern och säg vilken port den ska lyssna på

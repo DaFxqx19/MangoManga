@@ -3,22 +3,26 @@
     {
       "name": "One Piece",
       "length": "0",
-      "Thumbnail": "/Images/Thumb/OnePiece.webp"
+      "Thumbnail": "/Images/Thumb/OnePiece.webp",
+      "id": "00"
     },
     {
       "name": "Naruto",
       "length": "0",
-      "Thumbnail": "/Images/Thumb/Naruto.webp"
+      "Thumbnail": "/Images/Thumb/Naruto.webp",
+      "id": "01"
     },
     {
       "name": "Black Clover",
       "length": "0",
-      "Thumbnail": "/Images/Thumb/BlackClover.webp"
+      "Thumbnail": "/Images/Thumb/BlackClover.webp",
+      "id": "02"
     },
     {
       "name": "Hunter x Hunter",
       "length": "0",
-      "Thumbnail": "/Images/Thumb/HxH.webp"
+      "Thumbnail": "/Images/Thumb/HxH.webp",
+      "id": "03"
     }
   ]
 }
