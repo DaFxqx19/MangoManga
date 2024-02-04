@@ -4,25 +4,85 @@
       "name": "One Piece",
       "length": "0",
       "Thumbnail": "/Images/Thumb/OnePiece.webp",
-      "id": "00"
+      "id": "0"
     },
     {
       "name": "Naruto",
       "length": "0",
       "Thumbnail": "/Images/Thumb/Naruto.webp",
-      "id": "01"
+      "id": "1"
     },
     {
       "name": "Black Clover",
       "length": "0",
       "Thumbnail": "/Images/Thumb/BlackClover.webp",
-      "id": "02"
+      "id": "2"
     },
     {
       "name": "Hunter x Hunter",
       "length": "0",
       "Thumbnail": "/Images/Thumb/HxH.webp",
-      "id": "03"
+      "id": "3"
+    },
+    {
+      "name": "Berserk",
+      "length": "0",
+      "Thumbnail": "/Images/Thumb/Berserk.webp",
+      "id": "4"
+    },
+    {
+      "name": "Chainsaw Man",
+      "length": "0",
+      "Thumbnail": "/Images/Thumb/Chainsaw.webp",
+      "id": "5"
+    },
+    {
+      "name": "Drangon Ball",
+      "length": "0",
+      "Thumbnail": "/Images/Thumb/DragonBall.webp",
+      "id": "6"
+    },
+    {
+      "name": "Evangelion",
+      "length": "0",
+      "Thumbnail": "/Images/Thumb/Eva.webp",
+      "id": "7"
+    },
+    {
+      "name": "Fullmetal Alchemist",
+      "length": "0",
+      "Thumbnail": "/Images/Thumb/Fma.webp",
+      "id": "8"
+    },
+    {
+      "name": "Jojo",
+      "length": "0",
+      "Thumbnail": "/Images/Thumb/Jojo.webp",
+      "id": "9"
+    },
+    {
+      "name": "One Punch Man",
+      "length": "0",
+      "Thumbnail": "/Images/Thumb/Opm.webp",
+      "id": "10"
+    },
+    {
+      "name": "Punpun",
+      "length": "0",
+      "Thumbnail": "/Images/Thumb/Punpun.webp",
+      "id": "11"
+    },
+    {
+      "name": "Vagabond",
+      "length": "0",
+      "Thumbnail": "/Images/Thumb/Vagabond.webp",
+      "id": "12"
+    },
+    {
+      "name": "Vinland",
+      "length": "0",
+      "Thumbnail": "/Images/Thumb/Vinland.webp",
+      "id": "13"
     }
   ]
 }

@@ -15,8 +15,12 @@
         >
           <div class="nav-text">Start</div>
         </div>
-        <div class="authors nav-child"><div class="nav-text">Authors</div></div>
-        <div class="random nav-child"><div class="nav-text">Random</div></div>
+        <div class="authors nav-child mobileNope">
+          <div class="nav-text">Authors</div>
+        </div>
+        <div class="random nav-child mobileNope">
+          <div class="nav-text">Random</div>
+        </div>
         <div
           class="profile nav-child"
           onclick="window.location.assign('http://localhost:3000/profile')"
@@ -29,7 +33,9 @@
       <div class="Mango-Grid" id="gridMaster"></div>
       <!-- <div class="Manga"></div> -->
     </div>
-    <div class="bottom-bar"></div>
+    <div class="bottom-bar">
+      <!-- <div class="WIP" onclick="removeFromFav(0)"></div> -->
+    </div>
     <script>
       const gridDiv = document.getElementById("gridMaster");
       const loadIn = async () => {
@@ -42,13 +48,26 @@
           gridDiv.innerHTML = "";
           Mangas.forEach((element) => {
             // console.log(element);
-            gridDiv.innerHTML += `<div class="Mango" style="background-image: url(${element.Thumbnail});"><div class="Favorite" onclick="Add2Fav(${element.id})">Add 2 Favorite</div><div/>`;
+            gridDiv.innerHTML += `<div class="Mango" style="background-image: url(${element.Thumbnail});"><div class="Favorite" onclick="add2Fav(${element.id})">Add 2 Favorite</div><div/>`;
             // <div></div>;
           });
         } catch (error) {
           // handle the error
           console.error(error);
         }
+      };
+
+      const add2Fav = async (id) => {
+        console.log(id);
+        const response = await fetch(`http://localhost:3000/addFav/${id}`, {
+          method: "POST",
+        });
+      };
+      const removeFromFav = async (id) => {
+        console.log(id);
+        const response = await fetch(`http://localhost:3000/removeFav/${id}`, {
+          method: "DELETE",
+        });
       };
       loadIn();
     </script>

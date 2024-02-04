@@ -30,6 +30,27 @@ app.get("/loadIn", (req, res) => {
   res.send(jsonMeny);
 });
 
+app.post("/addFav/:id", (req, res) => {
+  const mangoId = req.params.id;
+  console.log(mangoId);
+
+  const found = favorites.findIndex((mango) => mango == mangoId);
+
+  if (found === -1) {
+    favorites.push(mangoId);
+  }
+  console.log(favorites);
+  res.send(`Manga ${mangoId} was added to the Favorites`);
+});
+
+app.delete("/removeFav/:id", (req, res) => {
+  const mangoId = req.params.id;
+  favorites = favorites.filter((id) => id !== mangoId);
+  console.log(favorites);
+
+  res.send(`Manga ${mangoId} was removed from the Favorites`);
+});
+
 // Starta servern och säg vilken port den ska lyssna på
 app.listen(port);
 // Gör en liten consol log så att användaren vet att allt gick bra
