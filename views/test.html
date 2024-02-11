@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-image: url(/Images/background.png);
+        /* height: 200vh; */
+      }
+      .Mango {
+        width: 200px;
+        height: 300px;
+        background-color: black;
+        background-image: url(/Images/Thumb/OnePiece.webp);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      .Site-cover {
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+        position: fixed;
+        top: 0;
+        /* left: -50vw; */
+        opacity: 0.8;
+        /* display: none; */
+        z-index: 10;
+        transition: 300ms;
+      }
+      .Info-board {
+        width: 750px;
+        height: 100vh;
+        background-color: aqua;
+        position: fixed;
+        top: 0;
+        left: 50vw;
+        transform: translateX(-50%);
+        z-index: 15;
+        transition: 200ms;
+        display: flex;
+        flex-direction: column;
+      }
+      .board-top {
+        flex-grow: 2;
+        background-color: blueviolet;
+        display: flex;
+      }
+      .mango-img {
+        /* background-color: green; */
+        flex-grow: 1;
+        background-image: url(/Images/Thumb/OnePiece.webp);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 80% auto;
+      }
+      .board-top-right {
+        background-color: brown;
+        /* flex-grow: 1; */
+        width: 300px;
+        padding: 1vh;
+      }
+      .author-img {
+        width: 100%;
+        height: 60%;
+        background-color: green;
+        background-image: url(/Images/Authors/Oda.webp);
+        background-repeat: no-repeat;
+        background-position: center 10%;
+        background-size: 100% auto;
+      }
+      .text-fav-board {
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+      }
+      .auth-ch-vol {
+        /* height: 50%; */
+        flex-grow: 1;
+        background-color: darkkhaki;
+        /* padding-top: 3vh; */
+        font-size: large;
+        /* text-align: center; */
+        padding-left: 2vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+      .favorite-button {
+        flex-grow: 2;
+        background-color: red;
+      }
+
+      .board-bottom {
+        flex-grow: 1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* grid-template-rows: repeat(3, 1fr); */
+        grid-column-gap: 2vh;
+        grid-row-gap: 2vh;
+        padding: 2vh;
+        padding-top: 4vh;
+        padding-bottom: 8vh;
+      }
+      .genre {
+        background-color: black;
+        /* height: 4vh; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Mango" onclick="press(0)"></div>
+
+    <div class="Info-board" id="infoBoard">
+      <div class="board-top">
+        <div class="mango-img"></div>
+        <div class="board-top-right">
+          <div class="author-img"></div>
+          <div class="text-fav-board">
+            <div class="auth-ch-vol">
+              <div class="author-name">Writer: Oda Eichiro</div>
+              <div class="chapters">1107 chapters</div>
+              <div class="volumes">107 volumes</div>
+            </div>
+            <div class="favorite-button"></div>
+          </div>
+        </div>
+      </div>
+      <div class="board-bottom">
+        <div class="genre"></div>
+      </div>
+    </div>
+
+    <div class="Site-cover" id="siteCover" onclick="turnOff()"></div>
+
+    <!-- <div class="Favorite" onclick="add2Fav()">Add 2 Favorite</div> -->
+    <script>
+      let siteUse = true;
+      const coverDiv = document.getElementById("siteCover");
+      const boardDiv = document.getElementById("infoBoard");
+      const press = async (id) => {
+        if (siteUse == true) {
+          siteUse = false;
+          // coverDiv.style.display = "block";
+          coverDiv.style.transform = "scale(1,1)";
+          boardDiv.style.transform = "translate(-50%,0)";
+          //   boardDiv.innerHTML = "ni ni ni sorry!!";
+        } else {
+          turnOff();
+        }
+      };
+      const turnOff = () => {
+        // coverDiv.style.display = "none";
+        coverDiv.style.transform = "scale(0,0)";
+        boardDiv.style.transform = "translate(-50%,-100%)";
+        // boardDiv.style.display = "none";
+        siteUse = true;
+      };
+      turnOff();
+    </script>
+  </body>
+</html>

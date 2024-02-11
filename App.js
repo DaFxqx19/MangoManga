@@ -25,6 +25,12 @@ app.get("/profile", (req, res) => {
   res.sendFile(path.join(__dirname, "views/Profile.html"));
 });
 
+// OBS test only
+app.get("/test", (req, res) => {
+  res.sendFile(path.join(__dirname, "views/test.html"));
+});
+// OBS test only
+
 app.get("/loadIn", (req, res) => {
   // console.log(searchTerm, page);
   res.send(jsonMeny);
