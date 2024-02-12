@@ -14,6 +14,20 @@
   }
 }
 
+.Site-cover {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  /* left: -50vw; */
+  opacity: 0.8;
+  /* display: none; */
+  z-index: 10;
+  /* transition: 200ms; */
+  transform: translate(0%, -100%);
+}
+
 .bottom-bar {
   width: 100vw;
   background-image: url(/Images/VietnamWarStorieDino.webp),
@@ -506,7 +520,7 @@
 
     background-image: url(/Images/Thumb/Naruto.webp);
     background-position: center;
-    background-size: 65% auto;
+    background-size: 75% auto;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
@@ -519,7 +533,7 @@
     transition: 200ms;
   }
   .Mango:hover {
-    background-size: 80% auto;
+    background-size: 100% auto;
   }
   .Favorite {
     /* background-color: #e66465; */
@@ -551,4 +565,89 @@
     width: 50%;
     height: 50%;
   }
+
+  /* Info pop up */
+
+  .Info-board {
+    width: 750px;
+    height: 100vh;
+    /* background-color: aqua; */
+    position: fixed;
+    top: 0;
+    left: 50vw;
+    /* transform: translateX(-50%); */
+    transform: translate(-50%, -100%);
+    z-index: 15;
+    transition: 200ms;
+    display: flex;
+    flex-direction: column;
+  }
+  .board-top {
+    flex-grow: 2;
+    background-color: blueviolet;
+    display: flex;
+  }
+  .mango-img {
+    /* background-color: green; */
+    flex-grow: 1;
+    background-image: url(/Images/Thumb/OnePiece.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% auto;
+  }
+  .board-top-right {
+    background-color: brown;
+    /* flex-grow: 1; */
+    width: 300px;
+    padding: 1vh;
+  }
+  .author-img {
+    width: 100%;
+    height: 60%;
+    background-color: green;
+    background-image: url(/Images/Authors/Oda.webp);
+    background-repeat: no-repeat;
+    background-position: center 10%;
+    background-size: 100% auto;
+  }
+  .text-fav-board {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+  }
+  .auth-ch-vol {
+    /* height: 50%; */
+    flex-grow: 1;
+    background-color: darkkhaki;
+    /* padding-top: 3vh; */
+    font-size: large;
+    /* text-align: center; */
+    padding-left: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .favorite-button {
+    flex-grow: 2;
+    background-color: red;
+  }
+
+  .board-bottom {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-rows: repeat(3, 1fr); */
+    grid-column-gap: 2vh;
+    grid-row-gap: 2vh;
+    padding: 2vh;
+    padding-top: 4vh;
+    padding-bottom: 8vh;
+    background-color: #e66465;
+  }
+  .genre {
+    background-color: black;
+    /* height: 4vh; */
+  }
+
+  /* Info pop up */
 }

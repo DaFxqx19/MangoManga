@@ -39,7 +39,33 @@
 
     <!-- info pop up -->
 
+    <div class="Info-board" id="infoBoard">
+      <div class="board-top">
+        <div class="mango-img"></div>
+        <div class="board-top-right">
+          <div class="author-img"></div>
+          <div class="text-fav-board">
+            <div class="auth-ch-vol">
+              <div class="author-name">Writer: Oda Eichiro</div>
+              <div class="chapters">1107 chapters</div>
+              <div class="volumes">107 volumes</div>
+            </div>
+            <div class="favorite-button"></div>
+          </div>
+        </div>
+      </div>
+      <div class="board-bottom">
+        <div class="genre"></div>
+      </div>
+    </div>
+
+    <div class="Site-cover" id="siteCover" onclick="turnOff()"></div>
+
+    <!-- End of info pop up -->
+
     <script>
+      let siteUse = true;
+
       const gridDiv = document.getElementById("gridMaster");
       const loadIn = async () => {
         try {
@@ -51,7 +77,7 @@
           gridDiv.innerHTML = "";
           Mangas.forEach((element) => {
             // console.log(element);
-            gridDiv.innerHTML += `<div class="Mango" style="background-image: url(${element.Thumbnail});"><div class="Favorite" onclick="add2Fav(${element.id})">Add 2 Favorite</div><div/>`;
+            gridDiv.innerHTML += `<div class="Mango" style="background-image: url(${element.Thumbnail});" onclick='press(${element.id})'><div/>`;
             // <div></div>;
           });
         } catch (error) {
@@ -72,6 +98,62 @@
           method: "DELETE",
         });
       };
+
+      const coverDiv = document.getElementById("siteCover");
+      const boardDiv = document.getElementById("infoBoard");
+      const press = async (id) => {
+        if (siteUse == true) {
+          siteUse = false;
+          try {
+            const response = await fetch("http://localhost:3000/loadIn");
+            const data = await response.json();
+            const Mangas = data.Mangas;
+            console.log(Mangas);
+            console.log("Mangas");
+
+            const mangon = Mangas.find((element) => element.id == id);
+
+            boardDiv.innerHTML = `<div class="board-top">
+        <div class="mango-img" style="background-image: url(${mangon.Thumbnail});"></div>
+        <div class="board-top-right">
+          <div class="author-img"></div>
+          <div class="text-fav-board">
+            <div class="auth-ch-vol">
+              <div class="author-name">Writer: Oda Eichiro</div>
+              <div class="chapters">1107 chapters</div>
+              <div class="volumes">107 volumes</div>
+            </div>
+            <div class="favorite-button"></div>
+          </div>
+        </div>
+      </div>
+      <div class="board-bottom">
+        <div class="genre"></div>
+      </div>`;
+          } catch (error) {
+            // handle the error
+            console.error(error);
+          }
+          // coverDiv.style.display = "block";
+          // coverDiv.style.transform = "scale(1,1)";
+          coverDiv.style.transform = "translate(0%,0)";
+          boardDiv.style.transform = "translate(-50%,0)";
+          //   boardDiv.innerHTML = "ni ni ni sorry!!";
+        } else {
+          turnOff();
+        }
+      };
+      const turnOff = () => {
+        // coverDiv.style.display = "none";
+        // coverDiv.style.transform = "scale(0,0)";
+        coverDiv.style.transform = "translate(0%,-100%)";
+        boardDiv.style.transform = "translate(-50%,-100%)";
+        // boardDiv.style.display = "none";
+        siteUse = true;
+      };
+
+      turnOff();
+
       loadIn();
     </script>
   </body>
