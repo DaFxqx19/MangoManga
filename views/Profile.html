@@ -1,87 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Profile Page</title>
-        <link rel="stylesheet" href="css/Main.css" />
-    </head>
-    <body>
-        <div class="top">
-            <div class="nav-bar">
-                <div
-                    class="start nav-child"
-                    onclick="window.location.assign('http://localhost:3000/')"
-                >
-                    <div class="nav-text">Start</div>
-                </div>
-                <div class="authors nav-child mobileNope">
-                    <div class="nav-text">Authors</div>
-                </div>
-                <div class="random nav-child mobileNope">
-                    <div class="nav-text">Random</div>
-                </div>
-                <div
-                    class="profile nav-child"
-                    onclick="window.location.assign('http://localhost:3000/profile')"
-                >
-                    <div class="nav-text">Profile</div>
-                </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="css/Main.css" />
+  </head>
+  <body>
+    <div class="top">
+      <div class="nav-bar">
+        <div
+          class="start nav-child"
+          onclick="window.location.assign('http://localhost:3000/')"
+        >
+          <div class="nav-text">Start</div>
+        </div>
+        <div class="authors nav-child mobileNope">
+          <div class="nav-text">Authors</div>
+        </div>
+        <div class="random nav-child mobileNope">
+          <div class="nav-text">Random</div>
+        </div>
+        <div
+          class="profile nav-child"
+          onclick="window.location.assign('http://localhost:3000/profile')"
+        >
+          <div class="nav-text">Profile</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="real-body">
+      <div class="Mango-Grid" id="gridMaster"></div>
+    </div>
+    <div class="bottom-bar"></div>
+
+    <div class="Info-board" id="infoBoard">
+      <div class="board-top">
+        <div class="mango-img"></div>
+        <div class="board-top-right">
+          <div class="author-img"></div>
+          <div class="text-fav-board">
+            <div class="auth-ch-vol">
+              <div class="author-name">Writer: Oda Eichiro</div>
+              <div class="chapters">1107 chapters</div>
+              <div class="volumes">107 volumes</div>
             </div>
+            <div class="favorite-button"></div>
+          </div>
         </div>
+      </div>
+      <div class="board-bottom">
+        <div class="genre"></div>
+      </div>
+    </div>
 
-        <div class="real-body">
-            <div class="Mango-Grid" id="gridMaster"></div>
-        </div>
-        <div class="bottom-bar"></div>
-        <script>
-            const gridDiv = document.getElementById("gridMaster");
+    <div class="Site-cover" id="siteCover" onclick="turnOff()"></div>
 
-            const loadIn = async () => {
-                try {
-                    const response = await fetch(
-                        "http://localhost:3000/loadIn"
-                    );
-                    const data = await response.json();
-                    const Mangas = data.Mangas;
-                    console.log(Mangas);
-                    const responseFav = await fetch(
-                        "http://localhost:3000/favorites"
-                    );
-                    const dataFav = await responseFav.json();
-                    const MangasFav = dataFav;
-                    console.log(MangasFav);
-                    gridDiv.innerHTML = "";
+    <div class="sure-board" id="rUSure"></div>
 
-                    MangasFav.forEach(mango => {
-                        console.log(mango);
-                        Mangas.forEach(element => {
-                            console.log(element);
-                            if (element.id == mango) {
-                                gridDiv.innerHTML += `<div class="Mango" style="background-image: url(${element.Thumbnail});"><div class="Favorite" onclick="removeFromFav(${element.id})">Remove</div><div/>`;
-                            }
-                            // <div></div>;
-                        });
-                    });
-                } catch (error) {
-                    // handle the error
-                    console.error(error);
-                }
-            };
+    <script>
+      const gridDiv = document.getElementById("gridMaster");
+      const sureBoardDiv = document.getElementById("rUSure");
 
-            const removeFromFav = async id => {
-                console.log(id);
+      let siteUse = true;
+      const coverDiv = document.getElementById("siteCover");
+      const boardDiv = document.getElementById("infoBoard");
 
-                const response = await fetch(
-                    `http://localhost:3000/removeFav/${id}`,
-                    {
-                        method: "DELETE",
-                    }
-                );
-                loadIn();
-            };
+      const loadIn = async () => {
+        try {
+          const response = await fetch("http://localhost:3000/loadIn");
+          const data = await response.json();
+          const Mangas = data.Mangas;
+          console.log(Mangas);
+          const responseFav = await fetch("http://localhost:3000/favorites");
+          const dataFav = await responseFav.json();
+          const MangasFav = dataFav;
+          console.log(MangasFav);
+          gridDiv.innerHTML = "";
 
-            loadIn();
-        </script>
-    </body>
+          MangasFav.forEach((mango) => {
+            console.log(mango);
+            Mangas.forEach((element) => {
+              console.log(element);
+              if (element.id == mango) {
+                gridDiv.innerHTML += `<div class="Mango" style="background-image: url(${element.Thumbnail});" onclick="press(${element.id})"><div/>`;
+              }
+              // <div></div>;
+            });
+          });
+        } catch (error) {
+          // handle the error
+          console.error(error);
+        }
+      };
+
+      const uSure = (id) => {
+        sureBoardDiv.style.display = "flex";
+        sureBoardDiv.innerHTML = `<div class="are-you-sure">Are You Sure?</div><div class="sure-lower"><div id="notSure" onclick="removeSure(${id})">Nah</div><div onclick="removeFromFav(${id})">Yeah</div></div>`;
+      };
+
+      const removeFromFav = async (id) => {
+        console.log(id);
+        removeSure(id);
+        turnOff();
+
+        const response = await fetch(`http://localhost:3000/removeFav/${id}`, {
+          method: "DELETE",
+        });
+        loadIn();
+      };
+      const removeSure = (id) => {
+        sureBoardDiv.style.display = "none";
+      };
+
+      const press = async (id) => {
+        if (siteUse == true) {
+          siteUse = false;
+          try {
+            const response = await fetch("http://localhost:3000/loadIn");
+            const data = await response.json();
+            const Mangas = data.Mangas;
+            // console.log(Mangas);
+            // console.log("Mangas");
+
+            const mangon = Mangas.find((element) => element.id == id);
+
+            boardDiv.innerHTML = `<div class="board-top"><div class="mango-img" style="background-image: url(${mangon.Thumbnail});"></div><div class="board-top-right"><div class="author-img"></div><div class="text-fav-board"><div class="auth-ch-vol"><div class="author-name">Writer: ${mangon.author}</div><div class="chapters">${mangon.ch} chapters</div><div class="volumes">${mangon.vol} volumes</div></div><div class="favorite-button" onclick="uSure(${mangon.id})">Remove From Favorites</div></div></div></div><div class="board-bottom" id="genreLIST"><div class="genre"></div></div>`;
+            const genreLista = mangon.genres;
+            const genreDiv = document.getElementById("genreLIST");
+
+            genreDiv.innerHTML = "";
+            genreLista.forEach((element) => {
+              // console.log(element)
+              genreDiv.innerHTML += `<div class="genre">${element}</div>`;
+            });
+          } catch (error) {
+            // handle the error
+            console.error(error);
+          }
+          // coverDiv.style.display = "block";
+          // coverDiv.style.transform = "scale(1,1)";
+          coverDiv.style.transform = "translate(0%,0)";
+          boardDiv.style.transform = "translate(-50%,0)";
+          //   boardDiv.innerHTML = "ni ni ni sorry!!";
+        } else {
+          turnOff();
+        }
+      };
+      const turnOff = () => {
+        // coverDiv.style.display = "none";
+        // coverDiv.style.transform = "scale(0,0)";
+        coverDiv.style.transform = "translate(0%,-100%)";
+        boardDiv.style.transform = "translate(-50%,-100%)";
+        removeSure();
+        // boardDiv.style.display = "none";
+        siteUse = true;
+      };
+
+      turnOff();
+
+      loadIn();
+    </script>
+  </body>
 </html>
