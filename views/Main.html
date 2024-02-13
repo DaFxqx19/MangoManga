@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Main Page</title>
-    <link rel="stylesheet" href="css/Main.css" />
-  </head>
-  <body>
-    <div class="top">
-      <div class="nav-bar">
-        <div
-          class="start nav-child"
-          onclick="window.location.assign('http://localhost:3000/')"
-        >
-          <div class="nav-text">Start</div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Main Page</title>
+        <link rel="stylesheet" href="css/Main.css" />
+    </head>
+    <body>
+        <div class="top">
+            <div class="nav-bar">
+                <div
+                    class="start nav-child"
+                    onclick="window.location.assign('http://localhost:3000/')"
+                >
+                    <div class="nav-text">Start</div>
+                </div>
+                <div class="authors nav-child mobileNope">
+                    <div class="nav-text">Authors</div>
+                </div>
+                <div class="random nav-child mobileNope">
+                    <div class="nav-text">Random</div>
+                </div>
+                <div
+                    class="profile nav-child"
+                    onclick="window.location.assign('http://localhost:3000/profile')"
+                >
+                    <div class="nav-text">Profile</div>
+                </div>
+            </div>
         </div>
-        <div class="authors nav-child mobileNope">
-          <div class="nav-text">Authors</div>
+        <div class="real-body">
+            <div class="Mango-Grid" id="gridMaster"></div>
+            <!-- <div class="Manga"></div> -->
         </div>
-        <div class="random nav-child mobileNope">
-          <div class="nav-text">Random</div>
+        <div class="bottom-bar">
+            <!-- <div class="WIP" onclick="removeFromFav(0)"></div> -->
         </div>
+<<<<<<< Updated upstream
         <div
           class="profile nav-child"
           onclick="window.location.assign('http://localhost:3000/profile')"
@@ -157,4 +173,50 @@
       loadIn();
     </script>
   </body>
+=======
+        <script>
+            const gridDiv = document.getElementById("gridMaster");
+            const loadIn = async () => {
+                try {
+                    const response = await fetch(
+                        "http://localhost:3000/loadIn"
+                    );
+                    const data = await response.json();
+                    const Mangas = data.Mangas;
+                    // console.log(Mangas);
+
+                    gridDiv.innerHTML = "";
+                    Mangas.forEach(element => {
+                        // console.log(element);
+                        gridDiv.innerHTML += `<div class="Mango" style="background-image: url(${element.Thumbnail});"><div class="Favorite" onclick="add2Fav(${element.id})">Add 2 Favorite</div><div/>`;
+                        // <div></div>;
+                    });
+                } catch (error) {
+                    // handle the error
+                    console.error(error);
+                }
+            };
+
+            const add2Fav = async id => {
+                console.log(id);
+                const response = await fetch(
+                    `http://localhost:3000/addFav/${id}`,
+                    {
+                        method: "POST",
+                    }
+                );
+            };
+            const removeFromFav = async id => {
+                console.log(id);
+                const response = await fetch(
+                    `http://localhost:3000/removeFav/${id}`,
+                    {
+                        method: "DELETE",
+                    }
+                );
+            };
+            loadIn();
+        </script>
+    </body>
+>>>>>>> Stashed changes
 </html>

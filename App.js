@@ -18,11 +18,11 @@ const port = 3000;
 app.use(express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "views/Main.html"));
+    res.sendFile(path.join(__dirname, "views/Main.html"));
 });
 // Skapa dina paths här!
 app.get("/profile", (req, res) => {
-  res.sendFile(path.join(__dirname, "views/Profile.html"));
+    res.sendFile(path.join(__dirname, "views/Profile.html"));
 });
 
 // OBS test only
@@ -32,29 +32,32 @@ app.get("/test", (req, res) => {
 // OBS test only
 
 app.get("/loadIn", (req, res) => {
-  // console.log(searchTerm, page);
-  res.send(jsonMeny);
+    // console.log(searchTerm, page);
+    res.send(jsonMeny);
+});
+app.get("/favorites", (req, res) => {
+    res.send(favorites);
 });
 
 app.post("/addFav/:id", (req, res) => {
-  const mangoId = req.params.id;
-  console.log(mangoId);
+    const mangoId = req.params.id;
+    console.log(mangoId);
 
-  const found = favorites.findIndex((mango) => mango == mangoId);
+    const found = favorites.findIndex(mango => mango == mangoId);
 
-  if (found === -1) {
-    favorites.push(mangoId);
-  }
-  console.log(favorites);
-  res.send(`Manga ${mangoId} was added to the Favorites`);
+    if (found === -1) {
+        favorites.push(mangoId);
+    }
+    console.log(favorites);
+    res.send(`Manga ${mangoId} was added to the Favorites`);
 });
 
 app.delete("/removeFav/:id", (req, res) => {
-  const mangoId = req.params.id;
-  favorites = favorites.filter((id) => id !== mangoId);
-  console.log(favorites);
+    const mangoId = req.params.id;
+    favorites = favorites.filter(id => id !== mangoId);
+    console.log(favorites);
 
-  res.send(`Manga ${mangoId} was removed from the Favorites`);
+    res.send(`Manga ${mangoId} was removed from the Favorites`);
 });
 
 // Starta servern och säg vilken port den ska lyssna på
