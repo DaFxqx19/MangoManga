@@ -36,21 +36,7 @@
         <div class="bottom-bar">
             <!-- <div class="WIP" onclick="removeFromFav(0)"></div> -->
         </div>
-<<<<<<< Updated upstream
-        <div
-          class="profile nav-child"
-          onclick="window.location.assign('http://localhost:3000/profile')"
-        >
-          <div class="nav-text">Profile</div>
-        </div>
       </div>
-    </div>
-    <div class="real-body">
-      <div class="Mango-Grid" id="gridMaster"></div>
-      <!-- <div class="Manga"></div> -->
-    </div>
-    <div class="bottom-bar">
-      <!-- <div class="WIP" onclick="removeFromFav(0)"></div> -->
     </div>
 
     <!-- info pop up -->
@@ -81,6 +67,8 @@
 
     <script>
       let siteUse = true;
+      const coverDiv = document.getElementById("siteCover");
+      const boardDiv = document.getElementById("infoBoard");
 
       const gridDiv = document.getElementById("gridMaster");
       const loadIn = async () => {
@@ -115,8 +103,7 @@
         });
       };
 
-      const coverDiv = document.getElementById("siteCover");
-      const boardDiv = document.getElementById("infoBoard");
+
       const press = async (id) => {
         if (siteUse == true) {
           siteUse = false;
@@ -124,28 +111,20 @@
             const response = await fetch("http://localhost:3000/loadIn");
             const data = await response.json();
             const Mangas = data.Mangas;
-            console.log(Mangas);
-            console.log("Mangas");
+            // console.log(Mangas);
+            // console.log("Mangas");
 
             const mangon = Mangas.find((element) => element.id == id);
 
-            boardDiv.innerHTML = `<div class="board-top">
-        <div class="mango-img" style="background-image: url(${mangon.Thumbnail});"></div>
-        <div class="board-top-right">
-          <div class="author-img"></div>
-          <div class="text-fav-board">
-            <div class="auth-ch-vol">
-              <div class="author-name">Writer: Oda Eichiro</div>
-              <div class="chapters">1107 chapters</div>
-              <div class="volumes">107 volumes</div>
-            </div>
-            <div class="favorite-button"></div>
-          </div>
-        </div>
-      </div>
-      <div class="board-bottom">
-        <div class="genre"></div>
-      </div>`;
+            boardDiv.innerHTML = `<div class="board-top"><div class="mango-img" style="background-image: url(${mangon.Thumbnail});"></div><div class="board-top-right"><div class="author-img"></div><div class="text-fav-board"><div class="auth-ch-vol"><div class="author-name">Writer: ${mangon.author}</div><div class="chapters">${mangon.ch} chapters</div><div class="volumes">${mangon.vol} volumes</div></div><div class="favorite-button"></div></div></div></div><div class="board-bottom" id="genreLIST"><div class="genre"></div></div>`;
+            const genreLista = mangon.genres;
+            const genreDiv = document.getElementById("genreLIST")
+
+            genreDiv.innerHTML ="";
+            genreLista.forEach(element => {
+              // console.log(element)
+              genreDiv.innerHTML += `<div class="genre">${element}</div>`;
+            });
           } catch (error) {
             // handle the error
             console.error(error);
@@ -173,50 +152,4 @@
       loadIn();
     </script>
   </body>
-=======
-        <script>
-            const gridDiv = document.getElementById("gridMaster");
-            const loadIn = async () => {
-                try {
-                    const response = await fetch(
-                        "http://localhost:3000/loadIn"
-                    );
-                    const data = await response.json();
-                    const Mangas = data.Mangas;
-                    // console.log(Mangas);
-
-                    gridDiv.innerHTML = "";
-                    Mangas.forEach(element => {
-                        // console.log(element);
-                        gridDiv.innerHTML += `<div class="Mango" style="background-image: url(${element.Thumbnail});"><div class="Favorite" onclick="add2Fav(${element.id})">Add 2 Favorite</div><div/>`;
-                        // <div></div>;
-                    });
-                } catch (error) {
-                    // handle the error
-                    console.error(error);
-                }
-            };
-
-            const add2Fav = async id => {
-                console.log(id);
-                const response = await fetch(
-                    `http://localhost:3000/addFav/${id}`,
-                    {
-                        method: "POST",
-                    }
-                );
-            };
-            const removeFromFav = async id => {
-                console.log(id);
-                const response = await fetch(
-                    `http://localhost:3000/removeFav/${id}`,
-                    {
-                        method: "DELETE",
-                    }
-                );
-            };
-            loadIn();
-        </script>
-    </body>
->>>>>>> Stashed changes
 </html>
