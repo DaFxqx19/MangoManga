@@ -137,7 +137,7 @@
     {
       "name": "Fullmetal Alchemist",
       "Thumbnail": "/Images/Thumb/Fma.webp",
-      "person": "/Images/Authors/Oda.webp",
+      "person": "/Images/Authors/Arakawa.webp",
       "id": "8",
       "ch": "116",
       "vol": "27",
@@ -155,7 +155,7 @@
     {
       "name": "Jojo",
       "Thumbnail": "/Images/Thumb/Jojo.webp",
-      "person": "/Images/Authors/Oda.webp",
+      "person": "/Images/Authors/Araki.webp",
       "id": "9",
       "ch": "968",
       "vol": "133",
@@ -176,11 +176,11 @@
     {
       "name": "One Punch Man",
       "Thumbnail": "/Images/Thumb/Opm.webp",
-      "person": "/Images/Authors/Oda.webp",
+      "person": "/Images/Authors/One.webp",
       "id": "10",
       "ch": "201",
       "vol": "29",
-      "author": "ONE, Murata Yusuke",
+      "author": "ONE",
       "genres": [
         "shōnen",
         "action",
@@ -195,7 +195,7 @@
     {
       "name": "Punpun",
       "Thumbnail": "/Images/Thumb/Punpun.webp",
-      "person": "/Images/Authors/Oda.webp",
+      "person": "/Images/Authors/Asano.webp",
       "id": "11",
       "ch": "147",
       "vol": "13",
@@ -205,7 +205,7 @@
     {
       "name": "Vagabond",
       "Thumbnail": "/Images/Thumb/Vagabond.webp",
-      "person": "/Images/Authors/Oda.webp",
+      "person": "/Images/Authors/Inoue.webp",
       "id": "12",
       "ch": "327",
       "vol": "37",
@@ -222,7 +222,7 @@
     {
       "name": "Vinland",
       "Thumbnail": "/Images/Thumb/Vinland.webp",
-      "person": "/Images/Authors/Oda.webp",
+      "person": "/Images/Authors/Yukimura.webp",
       "id": "13",
       "ch": "208",
       "vol": "27",
