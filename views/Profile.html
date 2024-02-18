@@ -11,7 +11,7 @@
       <div class="nav-bar">
         <div
           class="start nav-child"
-          onclick="window.location.assign('http://192.168.12.153:3000/')"
+          onclick="window.location.assign('http://localhost:3000/')"
         >
           <div class="nav-text">Start</div>
         </div>
@@ -23,7 +23,7 @@
         </div>
         <div
           class="profile nav-child"
-          onclick="window.location.assign('http://192.168.12.153:3000/profile')"
+          onclick="window.location.assign('http://localhost:3000/profile')"
         >
           <div class="nav-text">Profile</div>
         </div>
@@ -88,13 +88,11 @@
 
       const loadIn = async () => {
         try {
-          const response = await fetch("http://192.168.12.153:3000/loadIn");
+          const response = await fetch("http://localhost:3000/loadIn");
           const data = await response.json();
           const Mangas = data.Mangas;
           console.log(Mangas);
-          const responseFav = await fetch(
-            "http://192.168.12.153:3000/favorites"
-          );
+          const responseFav = await fetch("http://localhost:3000/favorites");
           const dataFav = await responseFav.json();
           const MangasFav = dataFav;
           console.log(MangasFav);
@@ -129,12 +127,9 @@
         removeSure(id);
         turnOff();
 
-        const response = await fetch(
-          `http://192.168.12.153:3000/removeFav/${id}`,
-          {
-            method: "DELETE",
-          }
-        );
+        const response = await fetch(`http://localhost:3000/removeFav/${id}`, {
+          method: "DELETE",
+        });
         loadIn();
       };
       const removeSure = (id) => {
@@ -146,7 +141,7 @@
         if (siteUse == true) {
           siteUse = false;
           try {
-            const response = await fetch("http://192.168.12.153:3000/loadIn");
+            const response = await fetch("http://localhost:3000/loadIn");
             const data = await response.json();
             const Mangas = data.Mangas;
             // console.log(Mangas);
