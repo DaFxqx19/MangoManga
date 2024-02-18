@@ -1,43 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Main Page</title>
-        <link rel="stylesheet" href="css/Main.css" />
-    </head>
-    <body>
-        <div class="top">
-            <div class="nav-bar">
-                <div
-                    class="start nav-child"
-                    onclick="window.location.assign('http://localhost:3000/')"
-                >
-                    <div class="nav-text">Start</div>
-                </div>
-                <div class="authors nav-child mobileNope">
-                    <div class="nav-text">Authors</div>
-                </div>
-                <div class="random nav-child mobileNope">
-                    <div class="nav-text">Random</div>
-                </div>
-                <div
-                    class="profile nav-child"
-                    onclick="window.location.assign('http://localhost:3000/profile')"
-                >
-                    <div class="nav-text">Profile</div>
-                </div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Page</title>
+    <link rel="stylesheet" href="css/Main.css" />
+  </head>
+  <body>
+    <div class="top">
+      <div class="nav-bar">
+        <div
+          class="start nav-child"
+          onclick="window.location.assign('http://localhost:3000/')"
+        >
+          <div class="nav-text">Start</div>
         </div>
-        <div class="real-body">
-            <div class="Mango-Grid" id="gridMaster"></div>
-            <!-- <div class="Manga"></div> -->
+        <div class="authors nav-child mobileNope">
+          <div class="nav-text">Authors</div>
         </div>
-        <div class="bottom-bar">
-            <!-- <div class="WIP" onclick="removeFromFav(0)"></div> -->
+        <div class="random nav-child mobileNope">
+          <div class="nav-text">Random</div>
+        </div>
+        <div
+          class="profile nav-child"
+          onclick="window.location.assign('http://localhost:3000/profile')"
+        >
+          <div class="nav-text">Profile</div>
         </div>
       </div>
     </div>
+    <div class="real-body">
+      <div class="Mango-Grid" id="gridMaster"></div>
+      <!-- <div class="Manga"></div> -->
+    </div>
+    <div class="bottom-bar"></div>
 
     <!-- info pop up -->
 
@@ -71,6 +67,26 @@
       const boardDiv = document.getElementById("infoBoard");
 
       const gridDiv = document.getElementById("gridMaster");
+
+      document.addEventListener("touchstart", this.touchstart, {
+        passive: false,
+      });
+      document.addEventListener("touchmove", this.touchmove, {
+        passive: false,
+      });
+
+      function touchstart(e) {
+        if (siteUse == false) {
+          e.preventDefault();
+        }
+      }
+
+      function touchmove(e) {
+        if (siteUse == false) {
+          e.preventDefault();
+        }
+      }
+
       const loadIn = async () => {
         try {
           const response = await fetch("http://localhost:3000/loadIn");
@@ -103,7 +119,6 @@
         });
       };
 
-
       const press = async (id) => {
         if (siteUse == true) {
           siteUse = false;
@@ -116,12 +131,12 @@
 
             const mangon = Mangas.find((element) => element.id == id);
 
-            boardDiv.innerHTML = `<div class="board-top"><div class="mango-img" style="background-image: url(${mangon.Thumbnail});"></div><div class="board-top-right"><div class="author-img"></div><div class="text-fav-board"><div class="auth-ch-vol"><div class="author-name">Writer: ${mangon.author}</div><div class="chapters">${mangon.ch} chapters</div><div class="volumes">${mangon.vol} volumes</div></div><div class="favorite-button" onclick="add2Fav(${mangon.id})">Add to Favorites</div><div class="mobile-exit" onclick="turnOff()">Go Back</div></div></div></div><div class="board-bottom" id="genreLIST"><div class="genre"></div></div>`;
+            boardDiv.innerHTML = `<div class="board-top"><div class="mango-img" style="background-image: url(${mangon.Thumbnail});"></div><div class="board-top-right"><div class="author-img"></div><div class="text-fav-board"><div class="auth-ch-vol"><div class="author-name">Writer: ${mangon.author}</div><div class="chapters">${mangon.ch} chapters</div><div class="volumes">${mangon.vol} volumes</div></div><div class="fav-leave"><div class="favorite-button" onclick="add2Fav(${mangon.id})">Add to Favorites</div><div class="mobile-exit-parent"><div class="mobile-exit" onclick="turnOff()">Go Back</div></div></div></div></div></div><div class="board-bottom" id="genreLIST"><div class="genre"></div></div>`;
             const genreLista = mangon.genres;
-            const genreDiv = document.getElementById("genreLIST")
+            const genreDiv = document.getElementById("genreLIST");
 
-            genreDiv.innerHTML ="";
-            genreLista.forEach(element => {
+            genreDiv.innerHTML = "";
+            genreLista.forEach((element) => {
               // console.log(element)
               genreDiv.innerHTML += `<div class="genre">${element}</div>`;
             });
@@ -133,6 +148,10 @@
           // coverDiv.style.transform = "scale(1,1)";
           coverDiv.style.transform = "translate(0%,0)";
           boardDiv.style.transform = "translate(-50%,0)";
+
+          document.body.style.height = "100vh";
+          document.body.style.overflowY = "hidden";
+
           //   boardDiv.innerHTML = "ni ni ni sorry!!";
         } else {
           turnOff();
@@ -144,6 +163,10 @@
         coverDiv.style.transform = "translate(0%,-100%)";
         boardDiv.style.transform = "translate(-50%,-100%)";
         // boardDiv.style.display = "none";
+
+        document.body.style.height = "100%";
+        document.body.style.overflowY = "hidden";
+
         siteUse = true;
       };
 
