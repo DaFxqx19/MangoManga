@@ -124,7 +124,7 @@
     border-radius: 3vh;
     text-align: center;
     padding: 3vh 0;
-    padding: auto;
+    /* padding: auto; */
     font-size: x-large;
     width: 125px;
 
@@ -502,6 +502,7 @@
     height: 12vh;
     display: flex;
     justify-content: space-evenly;
+    overflow: visible;
   }
   .nav-child {
     /* flex-grow: 0.8; */
@@ -514,7 +515,7 @@
     border-radius: 3vh;
     text-align: center;
     padding: 3vh 0;
-    padding: auto;
+    /* padding: auto; */
     font-size: x-large;
     width: 200px;
 
@@ -684,6 +685,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    color: #9198e5;
   }
   .fav-leave {
     display: flex;
@@ -771,13 +773,23 @@
     /* background-color: #e66465; */
     width: 15vw;
     height: 5vw;
-    min-width: 240px;
-    min-height: 80px;
+    min-width: 540px;
+    min-height: 300px;
     display: none;
     z-index: 20;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+
+    background-color: rgba(0, 0, 0, 0.475);
+    color: #e66465;
+    text-shadow: 0px 0px 5px #e66465;
+
+    font-size: x-large;
+
+    /* box-shadow: 0px 0px 5px 5px #e6646428; */
+
+    box-shadow: 0px 0px 5px 0px#9198e5, 0px 0px 5px 0px#9198e5 inset;
   }
   .unfavorite-button {
     flex-grow: 2;
@@ -806,6 +818,23 @@
   }
   .mobile-exit:hover {
     box-shadow: 0px 0px 5px 0px#9198e5, 0px 0px 5px 0px#9198e5 inset;
+  }
+
+  @media only screen and (max-height: 600px) {
+    .board-top-right {
+      display: flex;
+      flex-direction: row;
+      flex-grow: 1;
+    }
+    .text-fav-board {
+      flex-grow: 1;
+      height: 100%;
+    }
+    .author-img {
+      flex-grow: 1;
+      height: 100%;
+      width: auto;
+    }
   }
 }
 
@@ -853,7 +882,7 @@
     border-radius: 3vh;
     text-align: center;
     padding: 3vh 0;
-    padding: auto;
+    /* padding: auto; */
     font-size: x-large;
     width: 200px;
 
@@ -1106,8 +1135,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .are-you-sure {
   }
   .sure-lower {
     display: flex;

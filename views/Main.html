@@ -11,7 +11,7 @@
       <div class="nav-bar">
         <div
           class="start nav-child"
-          onclick="window.location.assign('http://localhost:3000/')"
+          onclick="window.location.assign('http://192.168.12.153:3000/')"
         >
           <div class="nav-text">Start</div>
         </div>
@@ -23,7 +23,7 @@
         </div>
         <div
           class="profile nav-child"
-          onclick="window.location.assign('http://localhost:3000/profile')"
+          onclick="window.location.assign('http://192.168.12.153:3000/profile')"
         >
           <div class="nav-text">Profile</div>
         </div>
@@ -68,28 +68,28 @@
 
       const gridDiv = document.getElementById("gridMaster");
 
-      document.addEventListener("touchstart", this.touchstart, {
-        passive: false,
-      });
+      // document.addEventListener("touchstart", this.touchstart, {
+      //   passive: false,
+      // });
       document.addEventListener("touchmove", this.touchmove, {
         passive: false,
       });
 
-      function touchstart(e) {
+      const touchstart = (e) => {
         if (siteUse == false) {
           e.preventDefault();
         }
-      }
+      };
 
-      function touchmove(e) {
+      const touchmove = (e) => {
         if (siteUse == false) {
           e.preventDefault();
         }
-      }
+      };
 
       const loadIn = async () => {
         try {
-          const response = await fetch("http://localhost:3000/loadIn");
+          const response = await fetch("http://192.168.12.153:3000/loadIn");
           const data = await response.json();
           const Mangas = data.Mangas;
           // console.log(Mangas);
@@ -108,30 +108,37 @@
 
       const add2Fav = async (id) => {
         console.log(id);
-        const response = await fetch(`http://localhost:3000/addFav/${id}`, {
-          method: "POST",
-        });
+        const response = await fetch(
+          `http://192.168.12.153:3000/addFav/${id}`,
+          {
+            method: "POST",
+          }
+        );
       };
       const removeFromFav = async (id) => {
         console.log(id);
-        const response = await fetch(`http://localhost:3000/removeFav/${id}`, {
-          method: "DELETE",
-        });
+        const response = await fetch(
+          `http://192.168.12.153:3000/removeFav/${id}`,
+          {
+            method: "DELETE",
+          }
+        );
       };
 
       const press = async (id) => {
         if (siteUse == true) {
           siteUse = false;
           try {
-            const response = await fetch("http://localhost:3000/loadIn");
+            const response = await fetch("http://192.168.12.153:3000/loadIn");
             const data = await response.json();
             const Mangas = data.Mangas;
             // console.log(Mangas);
             // console.log("Mangas");
 
             const mangon = Mangas.find((element) => element.id == id);
+            console.log(mangon.person);
 
-            boardDiv.innerHTML = `<div class="board-top"><div class="mango-img" style="background-image: url(${mangon.Thumbnail});"></div><div class="board-top-right"><div class="author-img"></div><div class="text-fav-board"><div class="auth-ch-vol"><div class="author-name">Writer: ${mangon.author}</div><div class="chapters">${mangon.ch} chapters</div><div class="volumes">${mangon.vol} volumes</div></div><div class="fav-leave"><div class="favorite-button" onclick="add2Fav(${mangon.id})">Add to Favorites</div><div class="mobile-exit-parent"><div class="mobile-exit" onclick="turnOff()">Go Back</div></div></div></div></div></div><div class="board-bottom" id="genreLIST"><div class="genre"></div></div>`;
+            boardDiv.innerHTML = `<div class="board-top"><div class="mango-img" style="background-image: url(${mangon.Thumbnail});"></div><div class="board-top-right"><div class="author-img" style="background-image: url(${mangon.person})"></div><div class="text-fav-board"><div class="auth-ch-vol"><div class="author-name">Writer: ${mangon.author}</div><div class="chapters">${mangon.ch} chapters</div><div class="volumes">${mangon.vol} volumes</div></div><div class="fav-leave"><div class="favorite-button" onclick="add2Fav(${mangon.id})">Add to Favorites</div><div class="mobile-exit-parent"><div class="mobile-exit" onclick="turnOff()">Go Back</div></div></div></div></div></div><div class="board-bottom" id="genreLIST"><div class="genre"></div></div>`;
             const genreLista = mangon.genres;
             const genreDiv = document.getElementById("genreLIST");
 

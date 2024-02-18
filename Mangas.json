@@ -3,6 +3,7 @@
     {
       "name": "One Piece",
       "Thumbnail": "/Images/Thumb/OnePiece.webp",
+      "person": "/Images/Authors/Oda.webp",
       "id": "0",
       "ch": "1106",
       "vol": "107",
@@ -19,6 +20,7 @@
     {
       "name": "Boruto",
       "Thumbnail": "/Images/Thumb/Boruto.webp",
+      "person": "/Images/Authors/Kishimoto.webp",
       "id": "1",
       "ch": "86",
       "vol": "21",
@@ -36,6 +38,7 @@
     {
       "name": "Black Clover",
       "Thumbnail": "/Images/Thumb/BlackClover.webp",
+      "person": "/Images/Authors/Tabata.webp",
       "id": "2",
       "ch": "369",
       "vol": "36",
@@ -53,6 +56,7 @@
     {
       "name": "Hunter x Hunter",
       "Thumbnail": "/Images/Thumb/HxH.webp",
+      "person": "/Images/Authors/Togashi.webp",
       "id": "3",
       "ch": "400",
       "vol": "37",
@@ -62,6 +66,7 @@
     {
       "name": "Berserk",
       "Thumbnail": "/Images/Thumb/Berserk.webp",
+      "person": "/Images/Authors/Miura.webp",
       "id": "4",
       "ch": "375",
       "vol": "42",
@@ -80,6 +85,7 @@
     {
       "name": "Chainsaw Man",
       "Thumbnail": "/Images/Thumb/Chainsaw.webp",
+      "person": "/Images/Authors/Fujimoto.webp",
       "id": "5",
       "ch": "154",
       "vol": "16",
@@ -97,10 +103,11 @@
     {
       "name": "Drangon Ball",
       "Thumbnail": "/Images/Thumb/DragonBall.webp",
+      "person": "/Images/Authors/Toriyama.webp",
       "id": "6",
       "ch": "620",
       "vol": "64",
-      "author": "Fujimoro Tatsuki",
+      "author": "Toriyama Akira",
       "genres": [
         "shōnen",
         "action",
@@ -113,6 +120,7 @@
     {
       "name": "Evangelion",
       "Thumbnail": "/Images/Thumb/Eva.webp",
+      "person": "/Images/Authors/Sadamoto.webp",
       "id": "7",
       "ch": "97",
       "vol": "14",
@@ -129,6 +137,7 @@
     {
       "name": "Fullmetal Alchemist",
       "Thumbnail": "/Images/Thumb/Fma.webp",
+      "person": "/Images/Authors/Oda.webp",
       "id": "8",
       "ch": "116",
       "vol": "27",
@@ -146,6 +155,7 @@
     {
       "name": "Jojo",
       "Thumbnail": "/Images/Thumb/Jojo.webp",
+      "person": "/Images/Authors/Oda.webp",
       "id": "9",
       "ch": "968",
       "vol": "133",
@@ -166,6 +176,7 @@
     {
       "name": "One Punch Man",
       "Thumbnail": "/Images/Thumb/Opm.webp",
+      "person": "/Images/Authors/Oda.webp",
       "id": "10",
       "ch": "201",
       "vol": "29",
@@ -184,6 +195,7 @@
     {
       "name": "Punpun",
       "Thumbnail": "/Images/Thumb/Punpun.webp",
+      "person": "/Images/Authors/Oda.webp",
       "id": "11",
       "ch": "147",
       "vol": "13",
@@ -193,6 +205,7 @@
     {
       "name": "Vagabond",
       "Thumbnail": "/Images/Thumb/Vagabond.webp",
+      "person": "/Images/Authors/Oda.webp",
       "id": "12",
       "ch": "327",
       "vol": "37",
@@ -209,6 +222,7 @@
     {
       "name": "Vinland",
       "Thumbnail": "/Images/Thumb/Vinland.webp",
+      "person": "/Images/Authors/Oda.webp",
       "id": "13",
       "ch": "208",
       "vol": "27",
